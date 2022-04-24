@@ -11,7 +11,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://AmikaMehta:AmikaMehta@cluster0.busbs.mongodb.net/etsy-database?retryWrites=true&w=majority";
 
    
-MongoClient.connect(url).then(function(err, db) {
+MongoClient.connect(url).then(function(db) {
     
   //if (err) throw err;
   var dbo = db.db("etsy-database");
@@ -39,7 +39,7 @@ passport.use(
 
 //db.close();
 
-});
+}).catch(function(err){console.log(err)});
 
 exports.auth = auth;
 exports.checkAuth = passport.authenticate("jwt", { session: false });
