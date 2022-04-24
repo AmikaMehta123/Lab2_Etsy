@@ -39,6 +39,7 @@ mongoUtil.connectToServer( function( err, client ) {
   if (err) console.log(err);
   // start the rest of your app here
   console.log("Connection Established")
+  console.log(client)
 } );
 
 
