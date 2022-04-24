@@ -33,6 +33,15 @@ var addfav = require('./routes/addFav');
 var deletefav = require('./routes/deleteFav');
 var editImage = require('./routes/editImage')
 var addPurchase = require('./routes/addPurchase')
+var mongoUtil = require( './utils/mongoUtil' );
+
+mongoUtil.connectToServer( function( err, client ) {
+  if (err) console.log(err);
+  // start the rest of your app here
+  console.log("Connection Established")
+} );
+
+
 //use cors to allow cross origin resource sharing
 app.use(cors({ origin: ['http://localhost:3000'], methods: ["GET", "POST"], credentials: true }));
 
