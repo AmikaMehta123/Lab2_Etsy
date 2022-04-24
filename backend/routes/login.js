@@ -1,7 +1,7 @@
 var app = require('express');
 const router = app.Router();
 const jwt = require('jsonwebtoken');
-var mongoUtil = require( 'mongoUtil' );
+var mongoUtil = require( '../utils/mongoUtil' );
 
 
 router.post('/', function(req,res){

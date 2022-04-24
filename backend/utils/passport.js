@@ -4,7 +4,7 @@ var ExtractJwt = require("passport-jwt").ExtractJwt;
 const passport = require("passport");
 const jwt = require('jsonwebtoken');
 //var { secret } = require("./config");
-var mongoUtil = require( 'mongoUtil' );
+var mongoUtil = require( './mongoUtil' );
 
 
 // var MongoClient = require('mongodb').MongoClient;
