@@ -48,7 +48,7 @@ router.post('/', async function(req,res){
         // res.send(name);
     } 
     console.log(result);
-    db.close();
+    dbo.close();
   });
 });
 // });
