@@ -17,6 +17,7 @@ router.post('/', function(req,res){
     
   //if (err) throw err;
   var dbo = mongoUtil.getDb();
+  console.log(dbo)
   dbo.collection("login_table").find({name,password}).toArray(function(err, result) {
 
     if (err) 

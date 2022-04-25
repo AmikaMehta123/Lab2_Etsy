@@ -5,10 +5,11 @@ var _db;
 
 module.exports = {
 
-  connectToServer: function( callback ) {
+  connectToServer: function() {
     MongoClient.connect( url,  { useNewUrlParser: true }, function( err, client ) {
+      if (err) return err
       _db  = client.db('etsy-database');
-      return callback( err );
+      return _db
     } );
   },
 
