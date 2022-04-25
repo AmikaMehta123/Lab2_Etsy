@@ -6,11 +6,11 @@ var _db;
 module.exports = {
 
   connectToServer: function() {
-    MongoClient.connect( url,  { useNewUrlParser: true }, function( err, client ) {
-      if (err) return err
+    MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
+    
       _db  = client.db('etsy-database');
       return _db
-    } );
+    } ).catch(err=>{console.log(err)});
   },
 
   getDb: function() {
