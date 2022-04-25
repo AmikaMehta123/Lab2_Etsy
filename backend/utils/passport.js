@@ -4,8 +4,11 @@ var ExtractJwt = require("passport-jwt").ExtractJwt;
 const passport = require("passport");
 const jwt = require('jsonwebtoken');
 //var { secret } = require("./config");
-var mongoUtil = require( './mongoUtil' );
 
+
+var mongoUtil = require( './mongoUtil' );
+mongoUtil.connectToServer().then((db)=>console.log(db)).catch(err=>console.log(err));
+var dbo = db.db('etsy-database');
 
 // var MongoClient = require('mongodb').MongoClient;
 // var url = "mongodb://localhost:27017/";
