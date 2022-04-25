@@ -6,9 +6,9 @@ const jwt = require('jsonwebtoken');
 //var { secret } = require("./config");
 
 
-var mongoUtil = require( './mongoUtil' );
-mongoUtil.connectToServer().then((db)=>console.log(db)).catch(err=>console.log(err));
-var dbo = db.db('etsy-database');
+//var mongoUtil = require( './mongoUtil' );
+//mongoUtil.connectToServer().then((db)=>console.log(db)).catch(err=>console.log(err));
+//var dbo = db.db('etsy-database');
 
 // var MongoClient = require('mongodb').MongoClient;
 // var url = "mongodb://localhost:27017/";
@@ -27,17 +27,17 @@ var opts = {
 passport.use(
     new JwtStrategy(opts, (jwt_payload, callback) => {
         const user_id = jwt_payload._id;
-        dbo.collection("login_table").find({_id:user_id}).toArray(function(err, results) {
-            if (err) {
-                return callback(err, false);
-            }
-            if (results) {
-                callback(null, results);
-            }
-            else {
-                callback(null, false);
-            }
-        });
+        // dbo.collection("login_table").find({_id:user_id}).toArray(function(err, results) {
+        //     if (err) {
+        //         return callback(err, false);
+        //     }
+        //     if (results) {
+        //         callback(null, results);
+        //     }
+        //     else {
+        //         callback(null, false);
+        //     }
+        // });
     })
 )
 
