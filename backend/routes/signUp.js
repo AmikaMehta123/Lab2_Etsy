@@ -5,19 +5,20 @@ const router = app.Router();
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
-
-var MongoClient = require('mongodb').MongoClient;
+var mongoUtil = require( '../utils/mongoUtil' );
+// var MongoClient = require('mongodb').MongoClient;
 //var url = "mongodb://localhost:27017/";
-var url = "mongodb+srv://AmikaMehta:AmikaMehta@cluster0.busbs.mongodb.net/etsy-database?retryWrites=true&w=majority";
+// var url = "mongodb+srv://AmikaMehta:AmikaMehta@cluster0.busbs.mongodb.net/etsy-database?retryWrites=true&w=majority";
 
-router.post('/', async(req,res)=>{
+router.post('/', async (req,res)=>{
 //const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
   // const salt = await bcrypt.genSalt(10)
   // const hashedPassword = await bcrypt.hash(password, salt)
-MongoClient.connect(url, function(err, db) 
-{
-  if (err) throw err;
+// MongoClient.connect(url, function(err, db) 
+// {
+  // if (err) throw err;
+  var db = await mongoUtil.connectToServer();
   var dbo = db.db("etsy-database");
 
   
@@ -74,7 +75,7 @@ MongoClient.connect(url, function(err, db)
 
 });
 
-});
+// });
 //router.post('/signup',registerUser);
 
 // Generate JWT
