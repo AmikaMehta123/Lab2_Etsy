@@ -6,10 +6,11 @@ var _db;
 module.exports = {
 
   connectToServer: async function() {
-    MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
+    _db = await MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
       _db  = client.db('etsy-database');
       return _db
     } ).catch(err=>{console.log(err)});
+    return _db;
   },
 
   getDb: function() {
