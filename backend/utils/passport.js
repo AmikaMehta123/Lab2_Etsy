@@ -51,7 +51,7 @@ MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
 
 // }).catch(function(err){console.log(err)});
 
-exports.auth = auth;
+// exports.auth = auth;
 exports.checkAuth = passport.authenticate("jwt", { session: false });
 
 
