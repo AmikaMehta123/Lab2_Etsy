@@ -20,7 +20,7 @@ var MongoClient = require('mongodb').MongoClient;
   //if (err) throw err;
 //   var dbo = db.db("etsy-database");
 // var dbo = mongoUtil.getDb();
-client = await MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
+MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
     // _db  = client.db('etsy-database');
     var opts = {
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
@@ -44,7 +44,7 @@ client = await MongoClient.connect( url,  { useNewUrlParser: true }).then(functi
             });
         })
     )
-    return client
+    
   } ).catch(err=>{console.log(err)});
 
 //db.close();
