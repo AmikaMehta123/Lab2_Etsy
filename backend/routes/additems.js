@@ -26,6 +26,7 @@ router.post('/',checkAuth, async function(req,res){
    // var url = "mongodb://localhost:27017/";
 
    // MongoClient.connect(url, function(err, db) {
+       
     var db = await mongoUtil.connectToServer();
         if (err) throw err;
         var dbo = db.db("etsy-database");
