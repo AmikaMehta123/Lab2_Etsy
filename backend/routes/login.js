@@ -16,7 +16,8 @@ router.post('/', async function(req,res){
     // MongoClient.connect(url).then(function(db) {
     
   //if (err) throw err;
-  var dbo = await mongoUtil.connectToServer();
+  var db = await mongoUtil.connectToServer();
+  var dbo = db.db('etsy-database');
   // console.log(dbo)
   dbo.collection("login_table").find({name,password}).toArray(function(err, result) {
 
@@ -48,7 +49,7 @@ router.post('/', async function(req,res){
         // res.send(name);
     } 
     console.log(result);
-    dbo.close();
+    db.close();
   });
 });
 // });

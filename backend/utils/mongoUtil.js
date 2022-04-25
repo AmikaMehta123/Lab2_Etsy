@@ -1,19 +1,19 @@
 const MongoClient = require( 'mongodb' ).MongoClient;
 const url = "mongodb+srv://AmikaMehta:AmikaMehta@cluster0.busbs.mongodb.net/etsy-database?retryWrites=true&w=majority";
 
-var _db;
+var client;
 
 module.exports = {
 
   connectToServer: async function() {
-    _db = await MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
-      _db  = client.db('etsy-database');
-      return _db
+    client = await MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
+      // _db  = client.db('etsy-database');
+      return client
     } ).catch(err=>{console.log(err)});
-    return _db;
+    return client;
   },
 
   getDb: function() {
-    return _db;
+    return client.db('etsy-database');
   }
 };
