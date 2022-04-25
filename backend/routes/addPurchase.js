@@ -56,9 +56,9 @@ router.post('/', checkAuth, async function(req,res){
                 // res.send("Inserted");
             }
         });
-      });
+    //   });
     res.send("Inserted")
-//});
+});
 
 module.exports = router
 
