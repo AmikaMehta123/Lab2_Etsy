@@ -4,7 +4,7 @@ const router = app.Router();
 const { checkAuth } = require("../utils/passport");
 var mongoUtil = require( '../utils/mongoUtil' );
 
-router.post('/',checkAuth, function(req,res){
+router.post('/',checkAuth, async function(req,res){
 
     var newvalues={
         $set:
