@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 
 var MongoClient = require('mongodb').MongoClient;
 // var url = "mongodb://localhost:27017/";
-// var url = "mongodb+srv://AmikaMehta:AmikaMehta@cluster0.busbs.mongodb.net/etsy-database?retryWrites=true&w=majority";
+var url = "mongodb+srv://AmikaMehta:AmikaMehta@cluster0.busbs.mongodb.net/etsy-database?retryWrites=true&w=majority";
 
    
 // MongoClient.connect(url).then(function(db) {
