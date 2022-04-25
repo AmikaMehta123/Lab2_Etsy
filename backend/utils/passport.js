@@ -16,7 +16,7 @@ var mongoUtil = require( './mongoUtil' );
     
   //if (err) throw err;
 //   var dbo = db.db("etsy-database");
-var dbo = mongoUtil.getDb();
+// var dbo = mongoUtil.getDb();
 var opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
     secretOrKey: "cmpe273_2022"
