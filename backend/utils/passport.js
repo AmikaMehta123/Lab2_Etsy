@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 //var { secret } = require("./config");
 
 
-//var mongoUtil = require( './mongoUtil' );
+var mongoUtil = require( './mongoUtil' );
 //mongoUtil.connectToServer().then((db)=>console.log(db)).catch(err=>console.log(err));
 //var dbo = db.db('etsy-database');
 
@@ -20,25 +20,27 @@ const jwt = require('jsonwebtoken');
   //if (err) throw err;
 //   var dbo = db.db("etsy-database");
 // var dbo = mongoUtil.getDb();
-function auth(){
+async function auth(){
     var opts = {
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
         secretOrKey: "cmpe273_2022"
     };
+    var db = await mongoUtil.connectToServer();
+    var dbo = db.db("etsy-database");
     passport.use(
         new JwtStrategy(opts, (jwt_payload, callback) => {
             const user_id = jwt_payload._id;
-            // dbo.collection("login_table").find({_id:user_id}).toArray(function(err, results) {
-            //     if (err) {
-            //         return callback(err, false);
-            //     }
-            //     if (results) {
-            //         callback(null, results);
-            //     }
-            //     else {
-            //         callback(null, false);
-            //     }
-            // });
+            dbo.collection("login_table").find({_id:user_id}).toArray(function(err, results) {
+                if (err) {
+                    return callback(err, false);
+                }
+                if (results) {
+                    callback(null, results);
+                }
+                else {
+                    callback(null, false);
+                }
+            });
         })
     )
 }
