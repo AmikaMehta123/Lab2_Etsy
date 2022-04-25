@@ -13,7 +13,7 @@ module.exports = {
     return client;
   },
 
-  getDb: function() {
-    return client.db('etsy-database');
-  }
+  // getDb: function() {
+  //   return client.db('etsy-database');
+  // }
 };
