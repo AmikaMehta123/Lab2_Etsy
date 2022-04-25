@@ -35,8 +35,8 @@ var editImage = require('./routes/editImage')
 var addPurchase = require('./routes/addPurchase')
 var mongoUtil = require( './utils/mongoUtil' );
 
-var db = await mongoUtil.connectToServer();
-console.log(db)
+mongoUtil.connectToServer().then((db)=>console.log(db)).catch(err=>console.log(err));
+
 
 //use cors to allow cross origin resource sharing
 app.use(cors({ origin: ['http://localhost:3000'], methods: ["GET", "POST"], credentials: true }));

@@ -7,7 +7,6 @@ module.exports = {
 
   connectToServer: async function() {
     MongoClient.connect( url,  { useNewUrlParser: true }).then(function( client ) {
-    
       _db  = client.db('etsy-database');
       return _db
     } ).catch(err=>{console.log(err)});
